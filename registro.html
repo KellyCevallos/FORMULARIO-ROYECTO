@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro de Datos</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Registro de Datos</h1>
+        <form action="index.html" method="post" class="form" id="registroForm" onsubmit="return validarFormulario()">
+            <div class="form-group">
+                <label for="name">Nombre:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="lastname">Apellidos:</label>
+                <input type="text" id="lastname" name="lastname" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Correo Electrónico:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Contraseña:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <input type="submit" value="Registrarte" class="btn-submit">
+            
+        </form>
+    </div>
+
+    <script>
+        function validarFormulario() {
+            var name = document.getElementById("name").value;
+            var lastname = document.getElementById("lastname").value;
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+            var message = document.getElementById("message").value;
+
+            if (name.trim() == "" || lastname.trim() == "" || email.trim() == "" || password.trim() == "" || message.trim() == "") {
+                alert("Por favor completa todos los campos.");
+                return false;
+            }
+
+            // Validación de correo electrónico básica
+            var emailRegex = /\S+@\S+\.\S+/;
+            if (!emailRegex.test(email)) {
+                alert("Por favor ingresa un correo electrónico válido.");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</body>
+</html>
